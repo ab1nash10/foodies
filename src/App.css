@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;500&family=Poppins:wght@500;600&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Jost", sans-serif;
+}
+
+.header {
+  background-image: url(assets/img.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.searchBar input {
+  outline: none;
+  width: 800px;
+  height: 50px;
+  text-transform: capitalize;
+}
+
+.res-card:hover {
+  cursor: pointer;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
