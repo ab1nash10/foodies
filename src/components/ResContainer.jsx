@@ -1,6 +1,5 @@
-import CDN_LINK from "../utils/constant";
-export const ResContainer = (props) => {
-  const { resData } = props;
+import { CDN_LINK } from "../utils/constant";
+export const ResContainer = ({ resData }) => {
   const {
     name,
     avgRating,
