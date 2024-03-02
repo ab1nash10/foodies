@@ -1,15 +1,16 @@
 import { CDN_LINK } from "../utils/constant";
-export const ResContainer = ({ resData }) => {
+export const ResContainer = (props) => {
+  const { resData } = props;
   const {
     name,
     avgRating,
     cloudinaryImageId,
     cuisines,
     locality,
-    slugs,
-    costForTwoString,
-    deliveryTime,
-  } = resData?.data || {};
+    areaName,
+    costForTwo,
+    sla,
+  } = resData?.info || {};
 
   return (
     <div className="res-card leading-relaxed px-4 py-5 font-jost">
@@ -33,16 +34,17 @@ export const ResContainer = ({ resData }) => {
           </p>
         </div>
         <div className="foodfor font-poppins opacity-60 ">
-          <p className="text-lg lowercase"> {costForTwoString}</p>
+          <p className="text-lg lowercase"> {costForTwo}</p>
         </div>
         <div className="res-area font-poppins opacity-70 capitalize text-lg">
           <p className="area">
-            {locality}, {slugs.city}
+            {locality} , {areaName}
           </p>
         </div>
         <div className="res-time text-[#F54748] capitalize font-poppins font-medium opacity-65">
-          <span className=" text-black">Delivery In : </span>
-          {deliveryTime} Mins
+          <span className=" text-black">
+            Delivery In : {sla.deliveryTime} Mins
+          </span>
         </div>
       </div>
     </div>
