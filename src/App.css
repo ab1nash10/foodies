@@ -8,7 +8,7 @@
 }
 
 .header {
-  height: 800px;
+  height: 780px;
   background-image: url(assets/img.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -29,4 +29,54 @@
   -moz-border-radius: 1rem;
   -ms-border-radius: 1rem;
   -o-border-radius: 1rem;
+}
+
+.shimmer-card {
+  margin-top: 50px;
+  margin-bottom: 100px;
+  height: 400px;
+  width: 320px;
+}
+
+.shimmer-card:hover {
+  cursor: pointer;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+.shimmer-img {
+  height: 150px;
+  width: 288px;
+}
+/* h 288 w 410 */
+
+.shimmer-name {
+  width: 114px;
+  height: 28px;
+}
+
+.shimmer-rating {
+  width: 55px;
+  height: 28;
+}
+
+.shimmertext {
+  width: 290px;
+  height: 28px;
+}
+
+.shimmertext1 {
+  width: 290px;
+  height: 28px;
+}
+.shimmertext2 {
+  width: 290px;
+  height: 28px;
+}
+.shimmertime {
+  height: 26px;
+  width: 163px;
 }

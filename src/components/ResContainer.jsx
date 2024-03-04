@@ -22,11 +22,13 @@ export const ResContainer = (props) => {
         />
       </div>
       <div className="res-info px-2 py-2 font-poppins  text-lg capitalize">
-        <div className="res-name flex justify-between  font-medium">
-          <p className="rest-name inline-block text-lg font-light">{name}</p>
-          <p className="rest-rating inline-block bg-green-600 px-1 text-white rounded-md">
-            {avgRating} &#9733;
+        <div className="res-name flex justify-between  font-medium ">
+          <p className="rest-name inline-block text-lg font-light truncate">
+            {name}
           </p>
+          <span className="rest-rating inline-block bg-green-600 px-1 text-white rounded-md">
+            {avgRating}&#9733;
+          </span>
         </div>
         <div className="res-cuisine  flex justify-between gap-3">
           <p className=" cuisineName truncate inline-block">
