@@ -7,11 +7,23 @@
   font-family: "Jost", sans-serif;
 }
 
-.header {
-  height: 780px;
-  background-image: url(assets/img.jpg);
+.parent {
+  height: 580px;
+  width: 100%;
+  position: relative;
+}
+.parent::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5) url(assets/img.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  background-blend-mode: darken;
 }
 
 .searchBar input {

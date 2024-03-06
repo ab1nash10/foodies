@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <div className="main w-full h-screen ">
-        <div className="header w-full">
+        <div>
           <Header />
         </div>
         <div className="container mx-auto">
