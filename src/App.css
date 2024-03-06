@@ -80,3 +80,23 @@
   height: 26px;
   width: 163px;
 }
+
+.shimmermain {
+  animation: blink 0.9s linear infinite alternate;
+  -webkit-animation: blink 0.9s linear infinite alternate;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
