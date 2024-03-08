@@ -62,10 +62,10 @@ export const Body = () => {
         </div>
         <button
           onClick={() => {
-            const filteredList = resList.filter(
+            const filteredList = filresList.filter(
               (restaurant) => restaurant.info.avgRating >= 4.0
             );
-            setresList(filteredList);
+            filSetresList(filteredList);
           }}
           className="FilterBtn bg-orange-300 text-black text-2xl px-4 py-2 rounded-xl outline-transparent hover:bg-[#F54748]"
         >
