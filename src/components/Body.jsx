@@ -32,7 +32,7 @@ export const Body = () => {
   return resList.length === 0 ? (
     <Shimmer />
   ) : (
-    <div>
+    <div className="container mx-auto">
       <div className=" search-filter py-8 px-20">
         <div className="searchBar flex items-center py-4 gap-2">
           <input

@@ -1,6 +1,7 @@
 //*Header Component
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 export const Header = () => {
   // const auth = "login";
   const [authState, setAuthState] = useState("login");
@@ -15,21 +16,26 @@ export const Header = () => {
       <div className="heading">
         <div className="flex items-center text-lg py-9 px-6 justify-between">
           <div className="logo">
-            <h2 className="text-3xl pl-10 font-poppins font-semibold px-4 text-[#FFFFFF] hover:text-[#F54748] cursor-pointer">{`Foodie's`}</h2>
+            <Link
+              to="/"
+              className="text-3xl pl-10 font-poppins font-semibold px-4 text-[#FFFFFF] hover:text-[#F54748] cursor-pointer"
+            >
+              {`Foodie's`}
+            </Link>
           </div>
           <div className="nav-items flex gap-16 font-jost font-bold text-lg text-[#F4f4f4]">
-            <a href="#" className="hover:text-[#F54748]">
+            <Link to="#" className="hover:text-[#F54748]">
               Home
-            </a>
-            <a href="#" className="hover:text-[#F54748]">
+            </Link>
+            <Link to="#" className="hover:text-[#F54748]">
               Menu
-            </a>
-            <a href="#" className="hover:text-[#F54748]">
+            </Link>
+            <Link to="#" className="hover:text-[#F54748]">
               About Us
-            </a>
-            <a href="#" className="hover:text-[#F54748]">
+            </Link>
+            <Link to="#" className="hover:text-[#F54748]">
               Facility
-            </a>
+            </Link>
           </div>
           <div className="cart pr-0 flex items-center gap-8 cursor-pointer  text-[#f4f4f4] ">
             <button
