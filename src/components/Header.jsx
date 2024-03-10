@@ -1,7 +1,7 @@
 //*Header Component
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 export const Header = () => {
   // const auth = "login";
   const [authState, setAuthState] = useState("login");
@@ -17,25 +17,45 @@ export const Header = () => {
         <div className="flex items-center text-lg py-9 px-6 justify-between">
           <div className="logo">
             <Link
-              to="/"
+              to=""
               className="text-3xl pl-10 font-poppins font-semibold px-4 text-[#FFFFFF] hover:text-[#F54748] cursor-pointer"
             >
               {`Foodie's`}
             </Link>
           </div>
           <div className="nav-items flex gap-16 font-jost font-bold text-lg text-[#F4f4f4]">
-            <Link to="#" className="hover:text-[#F54748]">
+            <NavLink
+              to=""
+              className={({ isActive }) => [
+                isActive ? "text-[#F54748]" : "text-white",
+              ]}
+            >
               Home
-            </Link>
-            <Link to="#" className="hover:text-[#F54748]">
+            </NavLink>{" "}
+            <NavLink
+              to="menu"
+              className={({ isActive }) => [
+                isActive ? "text-[#F54748]" : "text-white",
+              ]}
+            >
               Menu
-            </Link>
-            <Link to="#" className="hover:text-[#F54748]">
+            </NavLink>{" "}
+            <NavLink
+              to="aboutus"
+              className={({ isActive }) => [
+                isActive ? "text-[#F54748]" : "text-white",
+              ]}
+            >
               About Us
-            </Link>
-            <Link to="#" className="hover:text-[#F54748]">
-              Facility
-            </Link>
+            </NavLink>
+            <NavLink
+              to="contactus"
+              className={({ isActive }) => [
+                isActive ? "text-[#F54748]" : "text-white",
+              ]}
+            >
+              Contact Us
+            </NavLink>
           </div>
           <div className="cart pr-0 flex items-center gap-8 cursor-pointer  text-[#f4f4f4] ">
             <button

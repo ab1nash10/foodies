@@ -112,3 +112,23 @@
     opacity: 1;
   }
 }
+
+.resMenuCard {
+  border-radius: 50px;
+  background: #f6f5f4;
+  box-shadow: 20px 20px 60px #d1d0cf, -20px -20px 60px #ffffff;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+.resMenuCard img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}

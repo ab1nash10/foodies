@@ -22,9 +22,9 @@ export const Body = () => {
     filSetresList(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    console.log(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+    // console.log(
+    //   json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    // );
   };
 
   const [searchText, setSearchText] = useState("");
