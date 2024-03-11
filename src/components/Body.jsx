@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { ResContainer } from "./ResContainer";
 import Shimmer from "./Shimmer";
 Shimmer;
@@ -74,7 +75,14 @@ export const Body = () => {
       </div>
       <div className="px-14 py-9 grid grid-cols-4 gap-12">
         {filresList.map((restaurant) => {
-          return <ResContainer key={restaurant.info.id} resData={restaurant} />;
+          return (
+            <Link
+              key={restaurant.info.id}
+              to={"restaurant/" + restaurant.info.id}
+            >
+              <ResContainer resData={restaurant} />
+            </Link>
+          );
         })}
       </div>
     </div>

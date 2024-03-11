@@ -132,3 +132,70 @@
   -ms-border-radius: 50px;
   -o-border-radius: 50px;
 }
+
+.menuCard {
+  height: 400px;
+  width: 100%;
+  background-color: #cccccc4d;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.shimmerBG {
+  animation: shimmer 0.9s linear infinite alternate;
+  -webkit-animation: shimmer 0.9s linear infinite alternate;
+}
+
+@-webkit-keyframes shimmer {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.shimmerBG .imgShimmer {
+  height: 200px;
+  width: 200px;
+  background-color: gray;
+  opacity: 0.3;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+.shimmerBG .shimmer-btn {
+  height: 3rem;
+  width: 50px;
+}
+
+.resMenuCard .veg {
+  background-image: url(./assets/vegsymbol.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 50px;
+  width: 50px;
+}
+.resMenuCard .nonveg {
+  background-image: url(./assets/nv.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 50px;
+  width: 50px;
+}

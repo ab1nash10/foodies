@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
-import { CDN_LINK } from "../utils/constant";
-import Shimmer from "./Shimmer";
-
+import { useParams } from "react-router-dom";
+import { CDN_LINK, MENU_API } from "../utils/constant";
+import MenuShimmer from "./MenuShimmer";
 const RestaurantMenu = () => {
   const [resMenu, setResMenu] = useState(null);
 
+  const { resId } = useParams();
+  console.log(resId);
+
   useEffect(() => {
+    const fetchMenu = async () => {
+      const data = await fetch(MENU_API + resId);
+      const json = await data.json();
+      setResMenu(json.data);
+      console.log(json.data);
+    };
     fetchMenu();
-  }, []);
+  }, [resId]);
 
-  const fetchMenu = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.73826769999999&lng=77.0822151&restaurantId=241350&catalog_qa=undefined&submitAction=ENTER"
-    );
-    const json = await data.json();
-    setResMenu(json.data);
-    console.log(json.data);
-  };
-
-  if (resMenu === null) return <Shimmer />;
+  if (resMenu === null) return <MenuShimmer />;
 
   const {
     name: restaurantName,
@@ -28,7 +28,7 @@ const RestaurantMenu = () => {
   } = resMenu?.cards[0]?.card?.card?.info || {};
 
   const { itemCards } =
-    resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card
+    resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
       ?.card || {};
   console.log(resMenu);
   console.log(itemCards);
@@ -49,14 +49,34 @@ const RestaurantMenu = () => {
       {itemCards.map((res) => {
         return (
           <div key={res.card.info.id} className="resMenuCard">
-            <div className="mt-8 menuCard flex items-center justify-between px-6 py-4">
+            <div className="mt-8  flex items-center justify-between px-6 py-4">
               <div>
-                <h1 className="text-5xl font-bold">{res.card.info.name}</h1>
+                <h1 className="text-5xl font-bold shimmerName flex items-center gap-2 ">
+                  {res.card.info.name}
+                </h1>
                 <p className="py-6">{res.card.info.description}</p>
-                <p className="py-3">Rs.{res.card.info.price / 100}</p>
-                <button className="btn btn-primary">Add</button>
+                <p className="py-3">
+                  ₹
+                  {isNaN(res.card.info.price)
+                    ? res.card.info.defaultPrice / 100
+                    : res.card.info.price / 100}
+                </p>
+                <div className="flex gap-1 items-center">
+                  <button className="btn btn-primary">Add</button>
+                  {res.card.info.isVeg ? (
+                    <p className="veg"></p>
+                  ) : (
+                    <p className="nonveg"></p>
+                  )}
+                </div>
               </div>
-              <img src={CDN_LINK + res.card.info.imageId} className="" />
+              <img
+                src={
+                  res.card.info.imageId
+                    ? CDN_LINK + res.card.info.imageId
+                    : "https://globalnews.ca/wp-content/uploads/2023/11/indian-food-delivery.jpg?w=2048"
+                }
+              />
             </div>
           </div>
         );
