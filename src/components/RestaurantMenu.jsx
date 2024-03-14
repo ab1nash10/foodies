@@ -1,25 +1,11 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { CDN_LINK, MENU_API } from "../utils/constant";
+import useRestaurantMenu from "../hooks/useRestaurantMenu";
+import { CDN_LINK } from "../utils/constant";
 import MenuShimmer from "./MenuShimmer";
 const RestaurantMenu = () => {
-  const [resMenu, setResMenu] = useState(null);
-
   const { resId } = useParams();
-  console.log(resId);
-
-  useEffect(() => {
-    const fetchMenu = async () => {
-      const data = await fetch(MENU_API + resId);
-      const json = await data.json();
-      setResMenu(json.data);
-      console.log(json.data);
-    };
-    fetchMenu();
-  }, [resId]);
-
+  const resMenu = useRestaurantMenu(resId);
   if (resMenu === null) return <MenuShimmer />;
-
   const {
     name: restaurantName,
     avgRating,
@@ -62,7 +48,9 @@ const RestaurantMenu = () => {
                     : res.card.info.price / 100}
                 </p>
                 <div className="flex gap-1 items-center">
-                  <button className="btn btn-primary">Add</button>
+                  <button className="bg-[#49393B] px-3 py-3 font-bold font-jost font-xl text-white rounded-md">
+                    Add
+                  </button>
                   {res.card.info.isVeg ? (
                     <p className="veg"></p>
                   ) : (
