@@ -2,14 +2,15 @@
 
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import useGetStatus from "../hooks/useGetStatus";
 export const Header = () => {
-  // const auth = "login";
   const [authState, setAuthState] = useState("login");
   const changeAuth = () => {
     return authState == "logout"
       ? setAuthState("login")
       : setAuthState("logout");
   };
+  const getStatus = useGetStatus();
 
   return (
     <div className="parent">
@@ -33,12 +34,12 @@ export const Header = () => {
               Home
             </NavLink>{" "}
             <NavLink
-              to="menu"
+              to="grocery"
               className={({ isActive }) => [
                 isActive ? "text-[#F54748]" : "text-white",
               ]}
             >
-              Menu
+              Grocery
             </NavLink>{" "}
             <NavLink
               to="aboutus"
@@ -57,16 +58,17 @@ export const Header = () => {
               Contact Us
             </NavLink>
           </div>
-          <div className="cart pr-0 flex items-center gap-8 cursor-pointer  text-[#f4f4f4] ">
+          <div className="cart flex items-center gap-4 cursor-pointer text-[#f4f4f4] justify-center">
             <button
-              className=" text-xl hover:text-[#F54748] font-poppins font-bold capitalize"
+              className=" text-xl hover:text-[#F54748] font-poppins font-bold capitalize "
               onClick={() => {
                 changeAuth();
               }}
             >
               {authState}
             </button>
-            <i className="fa-sharp fa-solid fa-cart-shopping text-2xl pr-16 hover:text-[#F54748]"></i>
+            <i className="fa-sharp fa-solid fa-cart-shopping text-2xl pr-4 hover:text-[#F54748]"></i>
+            <div className="status text-3xl">{getStatus ? "🍏" : "🍎"}</div>
           </div>
         </div>
         <div className="tag-line flex flex-col items-center justify-center pt-28 text-[#F54748] text-4xl font-poppins font-semibold pointer-events-none">

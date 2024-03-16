@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
@@ -12,14 +12,24 @@ import { Body } from "./components/Body.jsx";
 import Contactus from "./components/Contactus.jsx";
 import Error from "./components/Error.jsx";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
+import Shimmer from "./components/Shimmer.jsx";
 import "./index.css";
+import { Grocery } from "./index.jsx";
 
-const router = createBrowserRouter(
+const mainRouter = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />} errorElement={<Error />}>
       <Route path="" element={<Body />} />
       <Route path="aboutus" element={<About />} />
       <Route path="contactus" element={<Contactus />} />
+      <Route
+        path="grocery"
+        element={
+          <Suspense fallback={<Shimmer />}>
+            <Grocery />
+          </Suspense>
+        }
+      />
       <Route path="restaurant/:resId" element={<RestaurantMenu />} />
     </Route>
   )
@@ -27,7 +37,7 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={mainRouter} />
   </React.StrictMode>
 );
 

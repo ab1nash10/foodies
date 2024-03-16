@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useGetStatus from "../hooks/useGetStatus";
+import { SWIGGY_MAIN_API } from "../utils/constant";
 import { ResContainer } from "./ResContainer";
 import Shimmer from "./Shimmer";
 Shimmer;
@@ -12,23 +14,23 @@ export const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&collection=83667"
-    );
+    const data = await fetch(SWIGGY_MAIN_API);
     const json = await data.json();
-    // console.log(json);
+
     setresList(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     filSetresList(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    // console.log(
-    //   json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    // );
   };
 
   const [searchText, setSearchText] = useState("");
+
+  const status = useGetStatus();
+  if (status === false) {
+    return <h1>Hey it seems like you are offline</h1>;
+  }
 
   return resList.length === 0 ? (
     <Shimmer />
