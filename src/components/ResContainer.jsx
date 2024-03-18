@@ -1,4 +1,6 @@
+import PropTypes from "prop-types";
 import { CDN_LINK } from "../utils/constant";
+
 export const ResContainer = (props) => {
   const { resData } = props;
   const {
@@ -11,6 +13,10 @@ export const ResContainer = (props) => {
     costForTwo,
     sla,
   } = resData?.info || {};
+
+  ResContainer.propTypes = {
+    resData: PropTypes.any,
+  };
 
   return (
     <div className="res-card leading-relaxed px-4 py-5 font-jost">
@@ -51,4 +57,17 @@ export const ResContainer = (props) => {
       </div>
     </div>
   );
+};
+
+export const withPromotedLabel = (ResContainer) => {
+  return function Enhanced(props) {
+    return (
+      <div>
+        <label className="absolute bg-orange-300 px-2 py-1 rounded-lg">
+          Open
+        </label>
+        <ResContainer {...props} />
+      </div>
+    );
+  };
 };

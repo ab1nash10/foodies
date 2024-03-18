@@ -1,29 +1,39 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import useGetStatus from "../hooks/useGetStatus";
 import { SWIGGY_MAIN_API } from "../utils/constant";
-import { ResContainer } from "./ResContainer";
+import { ResContainer, withPromotedLabel } from "./ResContainer";
 import Shimmer from "./Shimmer";
-Shimmer;
 export const Body = () => {
   const [resList, setresList] = useState([]);
   const [filresList, filSetresList] = useState([]);
+  const effectRan = useRef(false);
+  const RestaurantWithLabel = withPromotedLabel(ResContainer);
 
   useEffect(() => {
-    return () => fetchData(); //cleanup
+    if (effectRan.current === true) {
+      const fetchData = async () => {
+        const data = await fetch(SWIGGY_MAIN_API);
+        const json = await data.json();
+        console.log(json);
+
+        setresList(
+          json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants
+        );
+
+        filSetresList(
+          json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants
+        );
+      };
+
+      fetchData();
+    }
+    return () => {
+      effectRan.current = true;
+    };
   }, []);
-
-  const fetchData = async () => {
-    const data = await fetch(SWIGGY_MAIN_API);
-    const json = await data.json();
-
-    setresList(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    filSetresList(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
 
   const [searchText, setSearchText] = useState("");
 
@@ -82,7 +92,11 @@ export const Body = () => {
               key={restaurant.info.id}
               to={"restaurant/" + restaurant.info.id}
             >
-              <ResContainer resData={restaurant} />
+              {restaurant.info.isOpen ? (
+                <RestaurantWithLabel resData={restaurant} />
+              ) : (
+                <ResContainer resData={restaurant} />
+              )}
             </Link>
           );
         })}

@@ -59,11 +59,12 @@ const RestaurantMenu = () => {
                 </div>
               </div>
               <img
-                src={
-                  res.card.info.imageId
-                    ? CDN_LINK + res.card.info.imageId
-                    : "https://globalnews.ca/wp-content/uploads/2023/11/indian-food-delivery.jpg?w=2048"
-                }
+                src={CDN_LINK + res.card.info.imageId}
+                alt="dish-image"
+                onError={(e) => {
+                  e.currentTarget.src =
+                    "https://globalnews.ca/wp-content/uploads/2023/11/indian-food-delivery.jpg?w=2048";
+                }}
               />
             </div>
           </div>
