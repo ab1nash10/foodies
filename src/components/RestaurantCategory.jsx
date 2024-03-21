@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 import MenuItems from "./MenuItems";
 // import { CDN_LINK } from "../utils/constant";
 
@@ -18,9 +19,17 @@ const RestaurantCategory = ({ data }) => {
   RestaurantCategory.propTypes = {
     data: PropTypes.any,
   };
+  const [showMenuItems, setShowMenuItems] = useState(false);
+  const handleClick = () => {
+    console.log("clicked");
+    setShowMenuItems(!showMenuItems);
+  };
   return (
     <div className="menu-page">
-      <div className="accordion-header flex items-center justify-between text-2xl font-jost font-semibold my-4 p-3  rounded-md ">
+      <div
+        className="accordion-header flex items-center justify-between text-2xl font-jost font-semibold my-4 p-3 cursor-pointer rounded-md "
+        onClick={handleClick}
+      >
         <span>
           {data.title} ({data.itemCards.length})
         </span>
@@ -36,7 +45,7 @@ const RestaurantCategory = ({ data }) => {
           />
         </svg>
       </div>
-      <MenuItems itemCards={data.itemCards} />
+      {showMenuItems && <MenuItems itemCards={data.itemCards} />}
     </div>
   );
 };
