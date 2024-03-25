@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { addItem } from "../state/slice";
 import { CDN_LINK } from "../utils/constant";
 const MenuItems = ({ itemCards }) => {
   //   console.log(itemCards);
@@ -7,6 +9,11 @@ const MenuItems = ({ itemCards }) => {
   MenuItems.propTypes = {
     itemCards: PropTypes.any,
   };
+  const dispatch = useDispatch();
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
+
   return (
     <div>
       {itemCards.map((item) => (
@@ -27,7 +34,10 @@ const MenuItems = ({ itemCards }) => {
                   : item.card.info.price / 100}
               </p>
               <div className="flex gap-1 items-center">
-                <button className="bg-[#49393B] px-3 py-3 font-bold font-jost font-xl text-white rounded-md">
+                <button
+                  className="bg-[#49393B] px-3 py-3 font-bold font-jost font-xl text-white rounded-md"
+                  onClick={() => handleAddItem(item)}
+                >
                   Add
                 </button>
                 {item.card.info.isVeg ? (

@@ -23,6 +23,10 @@ export const ResContainer = (props) => {
       <div className="res-img">
         <img
           src={CDN_LINK + cloudinaryImageId}
+          onError={(e) => {
+            e.currentTarget.src =
+              "https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+          }}
           alt="restaurant-Image"
           className="rounded-lg"
         />

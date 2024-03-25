@@ -1,9 +1,12 @@
 //*Header Component
 
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import useGetStatus from "../hooks/useGetStatus";
+import UserContext from "../utils/UserContext";
 export const Header = () => {
+  const cartItems = useSelector((store) => store.cart.items);
   const [authState, setAuthState] = useState("login");
   const changeAuth = () => {
     return authState == "logout"
@@ -11,15 +14,17 @@ export const Header = () => {
       : setAuthState("logout");
   };
   const getStatus = useGetStatus();
-
+  const { userNames } = useContext(UserContext);
+  console.log(userNames);
+  console.log(cartItems);
   return (
     <div className="parent">
       <div className="heading">
         <div className="flex items-center text-lg py-9 px-6 justify-between">
-          <div className="logo">
+          <div className="logo hover:scale-125 transition-all">
             <Link
               to=""
-              className="text-3xl pl-10 font-poppins font-semibold px-4 text-[#FFFFFF] hover:text-[#F54748] cursor-pointer"
+              className="text-3xl pl-10 font-poppins font-semibold px-4 text-[#FFFFFF] hover:text-[#F54748] cursor-pointer "
             >
               {`Foodie's`}
             </Link>
@@ -67,13 +72,20 @@ export const Header = () => {
             >
               {authState}
             </button>
-            <i className="fa-sharp fa-solid fa-cart-shopping text-2xl pr-4 hover:text-[#F54748]"></i>
+            <Link to={"cart"}>
+              <i className="fa-sharp fa-solid fa-cart-shopping text-2xl pr-4 hover:text-[#F54748] hover:scale-125 transition-all">
+                <sup className="cartItemNo font-jost bg-orange-400 rounded-full px-2 text-black">
+                  {cartItems.length}
+                </sup>
+              </i>
+            </Link>
             <div className="status text-3xl">{getStatus ? "🍏" : "🍎"}</div>
           </div>
         </div>
         <div className="tag-line flex flex-col items-center justify-center pt-28 text-[#F54748] text-4xl font-poppins font-semibold pointer-events-none">
           <p>We Link. We Serve.</p>
           <p>Get it Delivered Right To Your Door</p>
+          {/* <p>{userNames}</p> */}
         </div>
       </div>
     </div>

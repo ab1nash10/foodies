@@ -26,18 +26,11 @@
   background-blend-mode: darken;
 }
 
-.logo:hover {
-  transition: all 0.5s linear;
-  -webkit-transition: all 0.5s linear;
-  -moz-transition: all 0.5s linear;
-  -ms-transition: all 0.5s linear;
-  -o-transition: all 0.5s linear;
-  transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  -moz-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  -o-transform: scale(1.2);
+.cartItemNo {
+  top: -1.1em;
+  left: -0.5rem;
 }
+
 .searchBar input {
   outline: none;
   width: 800px;

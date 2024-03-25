@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import useGetStatus from "../hooks/useGetStatus";
+// import UserContext from "../utils/UserContext";
 import { SWIGGY_MAIN_API } from "../utils/constant";
 import { ResContainer, withPromotedLabel } from "./ResContainer";
 import Shimmer from "./Shimmer";
@@ -9,7 +10,7 @@ export const Body = () => {
   const [filresList, filSetresList] = useState([]);
   const effectRan = useRef(false);
   const RestaurantWithLabel = withPromotedLabel(ResContainer);
-
+  // const { userNames, setUserName } = useContext(UserContext);
   useEffect(() => {
     if (effectRan.current === true) {
       const fetchData = async () => {
@@ -84,6 +85,11 @@ export const Body = () => {
         >
           Top Rated Restaurants
         </button>
+        {/* <input
+          type="text"
+          value={userNames}
+          onChange={(e) => setUserName(e.target.value)}
+        /> */}
       </div>
       <div className="px-14 py-9 grid grid-cols-4 gap-12">
         {filresList.map((restaurant) => {

@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -7,8 +8,10 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from "./App.jsx";
+import appStore from "./app/appStore.jsx";
 import About from "./components/About.jsx";
 import { Body } from "./components/Body.jsx";
+import { CartItems } from "./components/CartItems.jsx";
 import Contactus from "./components/Contactus.jsx";
 import Error from "./components/Error.jsx";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
@@ -31,13 +34,16 @@ const mainRouter = createBrowserRouter(
         }
       />
       <Route path="restaurant/:resId" element={<RestaurantMenu />} />
+      <Route path="cart" element={<CartItems />} />
     </Route>
   )
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={mainRouter} />
+    <Provider store={appStore}>
+      <RouterProvider router={mainRouter} />
+    </Provider>
   </React.StrictMode>
 );
 
