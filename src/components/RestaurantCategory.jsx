@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-// import { useState } from "react";
+import { useState } from "react";
 import MenuItems from "./MenuItems";
 // import { CDN_LINK } from "../utils/constant";
 
@@ -16,25 +16,25 @@ import MenuItems from "./MenuItems";
 
 const RestaurantCategory = ({
   data,
-  showMenuItems,
-  setShowIndex,
+  // showMenuItems,
+  // setShowIndex,
   // clicked,
   // setClicked,
 }) => {
   // console.log("data", data);
   RestaurantCategory.propTypes = {
     data: PropTypes.any,
-    showMenuItems: PropTypes.bool,
-    setShowIndex: PropTypes.any,
+    // showMenuItems: PropTypes.bool,
+    // setShowIndex: PropTypes.any,
     //   setClicked: PropTypes.any,
     //   clicked: PropTypes.any,
   };
-  // const [showMenusItems, setShowMenusItems] = useState(true);
+  const [showMenusItems, setShowMenusItems] = useState(false);
   const handleClick = () => {
-    // setShowMenusItems(!showMenusItems);
+    setShowMenusItems(!showMenusItems);
     // console.log("clicked");
     // if (clicked) {
-    setShowIndex();
+    // setShowIndex();
     // setClicked();
     // }
   };
@@ -59,7 +59,7 @@ const RestaurantCategory = ({
           />
         </svg>
       </div>
-      {showMenuItems && <MenuItems itemCards={data.itemCards} />}
+      {showMenusItems && <MenuItems itemCards={data.itemCards} />}
     </div>
   );
 };

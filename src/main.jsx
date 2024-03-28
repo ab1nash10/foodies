@@ -11,13 +11,13 @@ import App from "./App.jsx";
 import appStore from "./app/appStore.jsx";
 import About from "./components/About.jsx";
 import { Body } from "./components/Body.jsx";
-import { CartItems } from "./components/CartItems.jsx";
+
 import Contactus from "./components/Contactus.jsx";
 import Error from "./components/Error.jsx";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
 import Shimmer from "./components/Shimmer.jsx";
 import "./index.css";
-import { Grocery } from "./index.jsx";
+import { CartItems, Grocery } from "./index.jsx";
 
 const mainRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -34,7 +34,14 @@ const mainRouter = createBrowserRouter(
         }
       />
       <Route path="restaurant/:resId" element={<RestaurantMenu />} />
-      <Route path="cart" element={<CartItems />} />
+      <Route
+        path="cart"
+        element={
+          <Suspense fallback={<h1>loading</h1>}>
+            <CartItems />
+          </Suspense>
+        }
+      />
     </Route>
   )
 );

@@ -3,6 +3,7 @@
 import { useContext, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
+import { Toaster, toast } from "sonner";
 import useGetStatus from "../hooks/useGetStatus";
 import UserContext from "../utils/UserContext";
 export const Header = () => {
@@ -14,6 +15,9 @@ export const Header = () => {
       : setAuthState("logout");
   };
   const getStatus = useGetStatus();
+  const handleStatus = () => {
+    toast.info("You are Online");
+  };
   const { userNames } = useContext(UserContext);
   console.log(userNames);
   console.log(cartItems);
@@ -79,7 +83,10 @@ export const Header = () => {
                 </sup>
               </i>
             </Link>
-            <div className="status text-3xl">{getStatus ? "🍏" : "🍎"}</div>
+            <div className="status text-3xl" onMouseOver={handleStatus}>
+              <Toaster richColors />
+              {getStatus ? "🍏" : "🍎"}
+            </div>
           </div>
         </div>
         <div className="tag-line flex flex-col items-center justify-center pt-28 text-[#F54748] text-4xl font-poppins font-semibold pointer-events-none">

@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../hooks/useRestaurantMenu";
 // import { CDN_LINK } from "../utils/constant";
-import { useState } from "react";
+// import { useState } from "react";
 import MenuShimmer from "./MenuShimmer";
 import RestaurantCategory from "./RestaurantCategory";
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  const [showIndex, setShowIndex] = useState(null);
+  // const [showIndex, setShowIndex] = useState(null);
   // const [clicked, setClicked] = useState(false);
   const resMenu = useRestaurantMenu(resId);
   if (resMenu === null) return <MenuShimmer />;
@@ -15,22 +15,22 @@ const RestaurantMenu = () => {
     avgRating,
     cuisines,
     areaName,
-  } = resMenu?.cards[0]?.card?.card?.info || {};
+  } = resMenu?.cards[2]?.card?.card?.info || {};
 
   // const { itemCards } =
   //   resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
   //     ?.card || {};
-  // console.log(resMenu);
+  console.log(resMenu);
   // console.log(itemCards);
   // console.log(resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
   const category =
-    resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    resMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (item) =>
         item?.card?.card?.["@type"] ==
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
 
-  // console.log("category", category);
+  console.log("category", category);
   return (
     <div className="container RestaurantMain w-full py-12 mx-auto">
       <div className="ResNameAndInfo font-poppins">
@@ -44,12 +44,12 @@ const RestaurantMenu = () => {
         <p>{areaName}</p>
         <hr className="border-dashed border-black mt-5" />
       </div>
-      {category.map((category, index) => (
+      {category.map((category) => (
         <RestaurantCategory
           key={category?.card?.card?.title}
           data={category?.card?.card}
-          showMenuItems={index == showIndex && true}
-          setShowIndex={() => setShowIndex(index)}
+          // showMenuItems={index == showIndex && true}
+          // setShowIndex={() => setShowIndex(index)}
           // clicked={clicked}
           // setClicked={() => setClicked(clicked)}
         />

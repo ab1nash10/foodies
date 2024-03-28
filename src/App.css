@@ -214,14 +214,6 @@
 
 @keyframes shake {
   0% {
-    transform: rotate(10deg);
-    -webkit-transform: rotate(10deg);
-    -moz-transform: rotate(10deg);
-    -ms-transform: rotate(10deg);
-    -o-transform: rotate(10deg);
-    scale: 1.1;
-  }
-  50% {
     transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -229,12 +221,20 @@
     -o-transform: rotate(0deg);
     scale: 1.1;
   }
-  100% {
+  50% {
     transform: rotate(10deg);
     -webkit-transform: rotate(10deg);
     -moz-transform: rotate(10deg);
     -ms-transform: rotate(10deg);
     -o-transform: rotate(10deg);
+    scale: 1.1;
+  }
+  100% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
     scale: 1.1;
   }
 }
@@ -245,4 +245,8 @@
   -moz-transition: all;
   -ms-transition: all;
   -o-transition: all;
+}
+
+.emptyCartImage img {
+  mix-blend-mode: darken;
 }

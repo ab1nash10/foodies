@@ -1,14 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
+import { Toaster, toast } from "sonner";
 import { clearCart } from "../state/slice";
 import { CDN_LINK } from "../utils/constant";
-export const CartItems = () => {
+import { EmptyCart } from "./EmptyCart";
+const CartItems = () => {
   const cartItems = useSelector((store) => store.cart.items);
   console.log(cartItems);
+  let total = 0;
   const dispatch = useDispatch();
   const handleClearCart = () => {
     dispatch(clearCart());
   };
-  return (
+  const handlePlaceOrder = () => {
+    toast.success("Thank You!! Your Order Has Been Successfully Placed");
+  };
+  return cartItems.length === 0 ? (
+    <EmptyCart />
+  ) : (
     <div>
       <section className="py-12 sm:py-16 lg:py-20">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,7 +27,7 @@ export const CartItems = () => {
               onClick={handleClearCart}
             >
               <span className="px-2">Clear Cart </span>{" "}
-              <i className="fa-solid fa-trash"></i>
+              <i className="fa-solid fa-trash-can"></i>
             </button>
           </div>
 
@@ -55,7 +63,14 @@ export const CartItems = () => {
                                 {items.card.info.name}
                               </p>
                               <p className="mx-0 mt-1 mb-0 text-sm text-gray-400">
-                                36EU - 4US
+                                {items.card.info.isVeg ? (
+                                  <img
+                                    src="../assets/vegsymbol.png"
+                                    alt="Veg"
+                                  />
+                                ) : (
+                                  <img src="../assets/nv.png" alt="Non-Veg" />
+                                )}
                               </p>
                             </div>
 
@@ -66,6 +81,12 @@ export const CartItems = () => {
                                   ? items.card.info.defaultPrice / 100
                                   : items.card.info.price / 100}
                               </p>
+                              {/* {
+                                (total =
+                                  total +
+                                  (items.card.info.defaultPrice / 100 ||
+                                    items.card.info.price / 100))
+                              } */}
                             </div>
                           </div>
 
@@ -120,7 +141,7 @@ export const CartItems = () => {
                   <p className="text-lg font-medium text-gray-900">Total</p>
                   <p className="text-2xl font-semibold text-gray-900">
                     <span className="text-xs font-normal text-gray-400">
-                      INR
+                      INR {total}
                     </span>
                     {/* {items.card.info.defaultPrice
                       ? items.card.info.defaultPrice / 100
@@ -129,9 +150,11 @@ export const CartItems = () => {
                 </div>
 
                 <div className="mt-6 text-center">
+                  <Toaster position="bottom-right" richColors />
                   <button
                     type="button"
                     className="group inline-flex w-full items-center justify-center rounded-md bg-orange-500 px-6 py-4 text-lg font-semibold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
+                    onClick={handlePlaceOrder}
                   >
                     Place Order
                     <svg
@@ -158,3 +181,5 @@ export const CartItems = () => {
     </div>
   );
 };
+
+export default CartItems;
