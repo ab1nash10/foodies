@@ -1,0 +1,106 @@
+{
+  "type": "restaurant",
+  "info": {
+    "type": "F",
+    "id": "531480",
+    "name": "Rollsking",
+    "uuid": "da60ab73-a544-4790-acac-514471a9e411",
+    "city": "4",
+    "area": "Paschim Vihar",
+    "totalRatingsString": "1000+ ratings",
+    "cloudinaryImageId": "ts2jcaq0vadhut1ccoow",
+    "cuisines": ["North Indian", "Fast Food", "Beverages"],
+    "tags": [],
+    "costForTwo": 40000,
+    "costForTwoString": "₹400 FOR TWO",
+    "deliveryTime": 30,
+    "minDeliveryTime": 30,
+    "maxDeliveryTime": 30,
+    "slaString": "30 MINS",
+    "lastMileTravel": 5.699999809265137,
+    "slugs": {
+      "restaurant": "rollsking-paschim-vihar-paschim-vihar",
+      "city": "delhi"
+    },
+    "cityState": "4",
+    "address": "Shop No 14, Ground Floor, Community Centre, Block-A, Paschim Vihar, New Delhi-110063.",
+    "locality": "A Block",
+    "parentId": 4697,
+    "unserviceable": false,
+    "veg": false,
+    "select": false,
+    "favorite": false,
+    "tradeCampaignHeaders": [],
+    "ribbon": [
+      {
+        "type": "PROMOTED"
+      }
+    ],
+    "chain": [],
+    "feeDetails": {
+      "fees": [
+        {
+          "name": "distance",
+          "fee": 4800,
+          "message": ""
+        },
+        {
+          "name": "time",
+          "fee": 0,
+          "message": ""
+        },
+        {
+          "name": "special",
+          "fee": 0,
+          "message": ""
+        }
+      ],
+      "totalFees": 4800,
+      "message": "",
+      "title": "Delivery Charge",
+      "amount": "4800",
+      "icon": ""
+    },
+    "availability": {
+      "opened": true,
+      "nextOpenMessage": "",
+      "nextCloseMessage": ""
+    },
+    "longDistanceEnabled": 0,
+    "rainMode": "NONE",
+    "thirdPartyAddress": false,
+    "thirdPartyVendor": "",
+    "adTrackingID": "cid=7430012~p=1~eid=00000189-5c34-7381-0ee7-782c00d00107~srvts=1689469088641",
+    "badges": {
+      "imageBased": [],
+      "textBased": [],
+      "textExtendedBadges": []
+    },
+    "lastMileTravelString": "5.6 kms",
+    "hasSurge": false,
+    "aggregatedDiscountInfoV3": {
+      "header": "₹125 OFF",
+      "subHeader": "ABOVE ₹249",
+      "discountTag": "FLAT DEAL",
+      "headerTypeV2": 0
+    },
+    "sla": {
+      "restaurantId": "531480",
+      "deliveryTime": 30,
+      "minDeliveryTime": 30,
+      "maxDeliveryTime": 30,
+      "lastMileTravel": 5.699999809265137,
+      "lastMileDistance": 0,
+      "serviceability": "SERVICEABLE",
+      "rainMode": "NONE",
+      "longDistance": "NOT_LONG_DISTANCE",
+      "preferentialService": false,
+      "iconType": "EMPTY"
+    },
+    "promoted": true,
+    "avgRating": "4.0",
+    "totalRatings": 1000,
+    "new": false
+  },
+  "subtype": "basic"
+}
