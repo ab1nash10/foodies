@@ -41,6 +41,7 @@ const RestaurantCategory = ({
   return (
     <div className="menu-page">
       <div
+        data-testid="resMenu"
         className="accordion-header flex items-center justify-between text-2xl font-jost font-semibold my-4 p-3 cursor-pointer rounded-md "
         onClick={handleClick}
       >

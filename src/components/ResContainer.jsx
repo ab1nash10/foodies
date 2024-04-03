@@ -19,7 +19,10 @@ export const ResContainer = (props) => {
   };
 
   return (
-    <div className="res-card leading-relaxed px-4 py-5 font-jost">
+    <div
+      data-testid="resCard"
+      className="res-card leading-relaxed px-4 py-5 font-jost"
+    >
       <div className="res-img">
         <img
           src={CDN_LINK + cloudinaryImageId}

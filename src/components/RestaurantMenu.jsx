@@ -9,18 +9,20 @@ const RestaurantMenu = () => {
   // const [showIndex, setShowIndex] = useState(null);
   // const [clicked, setClicked] = useState(false);
   const resMenu = useRestaurantMenu(resId);
-  if (resMenu === null) return <MenuShimmer />;
   const {
     name: restaurantName,
     avgRating,
     cuisines,
     areaName,
-  } = resMenu?.cards[2]?.card?.card?.info || {};
+  } = resMenu?.cards[2]?.card?.card?.info ?? {};
+  console.log("resMenu", resMenu);
 
+  if (resMenu === null) {
+    return <MenuShimmer />;
+  }
   // const { itemCards } =
   //   resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
   //     ?.card || {};
-  console.log(resMenu);
   // console.log(itemCards);
   // console.log(resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
   const category =

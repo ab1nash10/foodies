@@ -20,7 +20,11 @@ const MenuItems = ({ itemCards }) => {
   return (
     <div>
       {itemCards.map((item) => (
-        <div key={item.card.info.id} className="itemMenuCard">
+        <div
+          key={item.card.info.id}
+          className="itemMenuCard"
+          data-testid="menuItems"
+        >
           <div className="mt-8  flex items-center justify-between px-6 py-4">
             <div>
               <h1 className="text-5xl font-bold shimmerName flex items-center gap-2 ">

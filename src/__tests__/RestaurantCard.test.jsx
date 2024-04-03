@@ -1,7 +1,7 @@
+import "@testing-library/jest-dom";
 import { expect } from "vitest";
 import { ResContainer } from "../components/ResContainer";
 import MOCK_DATA from "../mocks/mock.json";
-import { withOpenLabel } from "../mocks/withOpenLabel";
 import { render, screen } from "../utils/test-utils";
 
 describe("test cases for Restaurant Container components", () => {

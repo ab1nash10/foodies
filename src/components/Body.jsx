@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useGetStatus from "../hooks/useGetStatus";
 // import UserContext from "../utils/UserContext";
@@ -8,11 +8,12 @@ import Shimmer from "./Shimmer";
 export const Body = () => {
   const [resList, setresList] = useState([]);
   const [filresList, filSetresList] = useState([]);
-  const effectRan = useRef(false);
+  // const effectRan = useRef(false);
   const RestaurantWithLabel = withPromotedLabel(ResContainer);
   // const { userNames, setUserName } = useContext(UserContext);
-  useEffect(() => {
-    if (effectRan.current === true) {
+  useEffect(
+    () => {
+      // if (effectRan.current === true) {
       const fetchData = async () => {
         const data = await fetch(SWIGGY_MAIN_API);
         const json = await data.json();
@@ -30,11 +31,13 @@ export const Body = () => {
       };
 
       fetchData();
-    }
-    return () => {
-      effectRan.current = true;
-    };
-  }, []);
+    },
+    // return () => {
+    //   effectRan.current = true;
+    // };
+    // },
+    []
+  );
 
   const [searchText, setSearchText] = useState("");
 
@@ -62,6 +65,7 @@ export const Body = () => {
             }}
           />
           <button
+            data-testid="searchBtn"
             className="bg-[#F54748] rounded-xl text-4xl hover:bg-transparent"
             type="submit"
             onClick={() => {

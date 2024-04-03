@@ -26,7 +26,7 @@ const CartItems = () => {
               className="clearCart text-2xl font-semibold text-gray-900 flex items-center bg-orange-600 py-2 px-4 rounded-2xl hover:scale-105 transition-all"
               onClick={handleClearCart}
             >
-              <span className="px-2">Clear Cart </span>{" "}
+              <span className="px-2">Clear Cart </span>
               <i className="fa-solid fa-trash-can"></i>
             </button>
           </div>
@@ -38,6 +38,7 @@ const CartItems = () => {
                   <ul className="-my-8">
                     {cartItems.map((items) => (
                       <li
+                        data-testid="cartItems"
                         className="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0"
                         key={items.card.info.id}
                       >

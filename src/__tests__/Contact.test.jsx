@@ -1,6 +1,5 @@
 import Contactus from "../components/Contactus";
 import { render, screen } from "../utils/test-utils";
-
 describe("These are the testcases for ContactUs page", () => {
   it("Contact us page is rendered or not", () => {
     render(<Contactus />);
